@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: { default: 'jkelly', template: '%s · jkelly' },
+  title: { default: 'Cisco Ramon', template: '%s · Diary' },
   description: 'Writing on software, systems, and the web.',
 }
 
@@ -27,10 +27,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="site-header">
           <div className="container">
-            <a href="/" className="site-name">jkelly</a>
+            <a href="/" className="site-name">Cisco Ramon</a>
             <nav className="site-nav">
-              <a href="/">Writing</a>
-              <a href="https://github.com/jkelly" target="_blank" rel="noopener noreferrer">GitHub</a>
+              {/* <a href="/">Writing</a> */}
+              <a href="https://github.com/aungkoman" target="_blank" rel="noopener noreferrer">GitHub</a>
             </nav>
           </div>
         </header>
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <footer className="site-footer">
           <div className="container">
-            © {new Date().getFullYear()} jkelly
+            © {new Date().getFullYear()} Cisco Ramon
           </div>
         </footer>
       </body>
