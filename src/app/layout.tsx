@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import './globals.css' with { type: 'css' }
 
 export const metadata: Metadata = {
   title: { default: 'Cisco Ramon', template: '%s · Diary' },
