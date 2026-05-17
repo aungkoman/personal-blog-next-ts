@@ -32,7 +32,7 @@ export function getAllPosts(): PostMeta[] {
 
     return {
       slug,
-      title: data.title ?? slug,
+      title: String(data.title ?? slug),
       date: data.date ?? '',
       description: data.description ?? '',
       tags: data.tags ?? [],
@@ -58,7 +58,7 @@ export async function getPost(slug: string): Promise<Post> {
 
   return {
     slug,
-    title: data.title ?? slug,
+    title: String(data.title ?? slug),
     date: data.date ?? '',
     description: data.description ?? '',
     tags: data.tags ?? [],

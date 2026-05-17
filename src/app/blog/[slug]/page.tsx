@@ -1,4 +1,4 @@
-import { getAllPosts, getPost } from '@/lib/posts'
+import { getAllPosts, getPost } from '../../../lib/posts'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
