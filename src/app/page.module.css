@@ -5,7 +5,41 @@
   color: var(--text);
   font-family: var(--font-body);
   position: relative;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.themeToggle:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ===== SMOOTH SURFACE TRANSITIONS ===== */
+.glassCard,
+.navBar,
+.terminalWindow,
+.terminalHeader,
+.terminalBody {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
 
 /* ===== GLOWING GLASS EFFECT HELPERS ===== */
 .glassCard {

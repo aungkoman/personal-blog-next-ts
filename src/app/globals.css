@@ -1,5 +1,6 @@
-/* ===== PREMIUM DARK MODE TOKENS ===== */
-:root {
+/* ===== DARK MODE TOKENS (default) ===== */
+:root,
+[data-theme="dark"] {
   --bg: #070a13;               /* Deep cosmic background */
   --surface: #0e1324;          /* Glassmorphic slate card surface */
   --surface-hover: #151c33;    /* Highlight card surface */
@@ -22,6 +23,26 @@
   --shadow-primary-glow: 0 0 25px rgba(139, 92, 246, 0.2);
 }
 
+/* ===== LIGHT MODE TOKENS ===== */
+[data-theme="light"] {
+  --bg:                 #f0f4f8;
+  --surface:            #ffffff;
+  --surface-hover:      #f8fafc;
+  --border:             rgba(99, 102, 241, 0.18);
+  --border-light:       rgba(0, 0, 0, 0.07);
+  --accent:             #0284c7;           /* Sky Blue — readable on white */
+  --accent-light:       #38bdf8;
+  --primary:            #7c3aed;           /* Deeper violet for contrast */
+  --primary-light:      #8b5cf6;
+  --success:            #059669;
+  --warning:            #d97706;
+  --danger:             #dc2626;
+  --text:               #0f172a;           /* Near-black slate */
+  --text-muted:         #475569;           /* Medium slate */
+  --shadow-glow:        0 0 25px rgba(2, 132, 199, 0.12);
+  --shadow-primary-glow: 0 0 25px rgba(124, 58, 237, 0.15);
+}
+
 /* ===== RESET & ROOT ===== */
 *, *::before, *::after { 
   box-sizing: border-box; 
@@ -31,7 +52,7 @@
 
 html { 
   scroll-behavior: smooth; 
-  scroll-padding-top: 80px; /* Offset for sticky navigation */
+  scroll-padding-top: 80px;
 }
 
 /* ===== BASE STYLES ===== */
@@ -46,7 +67,16 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  /* Smooth theme transitions */
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
+
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.04) 0%, transparent 40%);
+}
+
 
 /* ===== CUSTOM SELECTION ===== */
 ::selection {
