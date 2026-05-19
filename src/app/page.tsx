@@ -6,7 +6,8 @@ import {
   TechSwitcher, 
   ProjectPlanner, 
   ContactForm, 
-  MobileMenu 
+  MobileMenu,
+  ThemeToggle
 } from "./components/ClientComponents";
 
 export const metadata = {
@@ -38,6 +39,8 @@ export default function Home() {
             <a href="#planner" className={styles.navLink}>Cost Planner</a>
             <a href="#blog" className={styles.navLink}>Insights</a>
             <a href="#contact" className={styles.navActionBtn}>&gt; Contact Us</a>
+            {/* Theme toggle — desktop only (mobile gets it inside MobileMenu) */}
+            <ThemeToggle />
           </div>
           <MobileMenu />
         </div>

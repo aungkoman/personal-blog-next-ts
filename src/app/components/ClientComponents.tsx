@@ -2,6 +2,26 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "../page.module.css";
+import { useTheme } from "./ThemeProvider";
+
+/* ===== THEME TOGGLE BUTTON ===== */
+export function ThemeToggle() {
+  const { theme, toggle } = useTheme();
+  // Avoid hydration mismatch — only render icon after mount
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  return (
+    <button
+      onClick={toggle}
+      className={styles.themeToggle}
+      aria-label={mounted && theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      title={mounted && theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      {mounted ? (theme === "dark" ? "☀️" : "🌙") : "🌙"}
+    </button>
+  );
+}
 
 /* ===== INTERACTIVE TERMINAL COMPONENT ===== */
 export function InteractiveTerminal() {
@@ -415,16 +435,29 @@ export function ContactForm() {
 /* ===== MOBILE HEADER COMPONENT ===== */
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggle } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <>
-      <button 
-        className={styles.mobileMenuBtn} 
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle navigation menu"
-      >
-        {isOpen ? "✕" : "☰"}
-      </button>
+      {/* Mobile row: theme toggle + hamburger */}
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <button
+          onClick={toggle}
+          className={styles.themeToggle}
+          aria-label="Toggle theme"
+        >
+          {mounted ? (theme === "dark" ? "☀️" : "🌙") : "🌙"}
+        </button>
+        <button 
+          className={styles.mobileMenuBtn} 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
+      </div>
 
       {isOpen && (
         <div 
