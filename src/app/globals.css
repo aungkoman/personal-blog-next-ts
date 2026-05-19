@@ -1,27 +1,45 @@
-/* ===== CODE THEME TOKENS ===== */
+/* ===== PREMIUM DARK MODE TOKENS ===== */
 :root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --border: #30363d;
-  --accent: #58a6ff;
-  --accent-light: #79c0ff;
-  --success: #3fb950;
-  --warning: #d29922;
-  --danger: #f85149;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --font-display: "JetBrains Mono", "SF Mono", Monaco, Consolas, "Courier New", monospace;
+  --bg: #070a13;               /* Deep cosmic background */
+  --surface: #0e1324;          /* Glassmorphic slate card surface */
+  --surface-hover: #151c33;    /* Highlight card surface */
+  --border: rgba(56, 189, 248, 0.15); /* Neon blue translucent border */
+  --border-light: rgba(255, 255, 255, 0.08);
+  --accent: #38bdf8;           /* Neon Blue secondary highlight */
+  --accent-light: #7dd3fc;
+  --primary: #8b5cf6;          /* Electric Violet primary brand color */
+  --primary-light: #a78bfa;
+  --success: #10b981;          /* Emerald Success */
+  --warning: #f59e0b;          /* Amber Warning */
+  --danger: #ef4444;           /* Coral Danger */
+  --text: #f8fafc;             /* Bright Slate white */
+  --text-muted: #94a3b8;       /* Cool Slate gray */
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Monaco, Consolas, "Courier New", monospace;
+  
+  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+  --shadow-primary-glow: 0 0 25px rgba(139, 92, 246, 0.2);
 }
 
-/* ===== RESET ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* ===== RESET & ROOT ===== */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
-/* ===== BASE ===== */
+html { 
+  scroll-behavior: smooth; 
+  scroll-padding-top: 80px; /* Offset for sticky navigation */
+}
+
+/* ===== BASE STYLES ===== */
 body {
   background: var(--bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
@@ -30,9 +48,31 @@ body {
   position: relative;
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== CUSTOM SELECTION ===== */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: var(--text);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -45,3 +85,14 @@ body {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
