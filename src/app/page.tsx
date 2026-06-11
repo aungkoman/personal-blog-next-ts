@@ -157,6 +157,60 @@ const translations = {
 export default function Home() {
   const [lang, setLang] = useState<'en' | 'mm'>('en');
   const t = translations[lang];
+  
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    org: '',
+    bizEmail: '',
+    scope: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Handle input change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/slack', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form after success
+        setFormData({
+          name: '',
+          org: '',
+          bizEmail: '',
+          scope: '',
+        });
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white font-sans text-slate-900 antialiased selection:bg-slate-900 selection:text-white">
@@ -378,28 +432,94 @@ export default function Home() {
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-10 shadow-2xl md:p-12">
-              <form className="space-y-8">
+              {/* Success message */}
+              {submitStatus === 'success' && (
+                <div className="mb-6 rounded-lg bg-green-50 p-4 text-green-800 border border-green-200">
+                  <p className="font-semibold">✅ Thank you! Your message has been sent successfully.</p>
+                  <p className="text-sm mt-1">We'll get back to you soon.</p>
+                </div>
+              )}
+              
+              {/* Error message */}
+              {submitStatus === 'error' && (
+                <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-800 border border-red-200">
+                  <p className="font-semibold">❌ Oops! Something went wrong.</p>
+                  <p className="text-sm mt-1">Please try again later.</p>
+                </div>
+              )}
+              
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.name}</label>
-                    <input required className="w-full border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600" placeholder="Jane Doe" />
+                    <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.name}</label>
+                    <input
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className="w-full border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600 disabled:opacity-50"
+                      placeholder="Jane Doe"
+                    />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.org}</label>
-                    <input required className="w-full border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600" placeholder="Retail / Cafe" />
+                    <label htmlFor="org" className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.org}</label>
+                    <input
+                      id="org"
+                      name="org"
+                      required
+                      value={formData.org}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className="w-full border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600 disabled:opacity-50"
+                      placeholder="Retail / Cafe"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.bizEmail}</label>
-                  <input required className="w-full border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600" placeholder="09xxxxxxx" />
+                  <label htmlFor="bizEmail" className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.bizEmail}</label>
+                  <input
+                    id="bizEmail"
+                    name="bizEmail"
+                    required
+                    value={formData.bizEmail}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="w-full border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600 disabled:opacity-50"
+                    placeholder="09xxxxxxx"
+                  />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.scope}</label>
-                  <textarea rows={4} required className="w-full resize-none border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600" placeholder="..." />
+                  <label htmlFor="scope" className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t.contact.labels.scope}</label>
+                  <textarea
+                    id="scope"
+                    name="scope"
+                    rows={4}
+                    required
+                    value={formData.scope}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="w-full resize-none border-b border-slate-200 py-3 outline-none transition-colors focus:border-blue-600 disabled:opacity-50"
+                    placeholder="..."
+                  />
                 </div>
-                <button className="group flex w-full items-center justify-center gap-3 rounded-full bg-slate-900 py-5 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-blue-700">
-                  {t.contact.labels.submit}
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group flex w-full items-center justify-center gap-3 rounded-full bg-slate-900 py-5 text-sm font-black uppercase tracking-[0.2em] text-white transition-all hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+                      Sending...
+                    </span>
+                  ) : (
+                    <>
+                      {t.contact.labels.submit}
+                      <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
