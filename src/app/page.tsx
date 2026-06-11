@@ -1,166 +1,181 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Software 100 — Professional Software Development in Myanmar",
-  description: "Yangon's premier engineering studio building high-performance web and mobile apps.",
+  title: "Software 100 — Reliable Software Partnerships in Myanmar",
+  description: "Yangon's premier engineering studio. We act as your technical partner, bridging domain knowledge with scalable code.",
 };
 
 export default function Home() {
   return (
-    <main style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.6', color: '#333' }}>
+    <main className="font-sans text-gray-800 scroll-smooth selection:bg-blue-100 selection:text-blue-900">
       
       {/* 1. NAVIGATION */}
-      <nav style={{ padding: '1rem 5%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #eaeaea' }}>
-        <Link href="/" style={{ fontWeight: 'bold', fontSize: '1.2rem', textDecoration: 'none', color: '#000' }}>
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
+        <Link href="/" className="text-xl font-bold tracking-tight text-gray-900 hover:text-blue-600 transition-colors">
           &lt;/&gt; Software 100
         </Link>
-        <div style={{ display: 'flex', gap: '1.5rem' }}>
-          <a href="#services" style={{ textDecoration: 'none', color: '#666' }}>Services</a>
-          <a href="#portfolio" style={{ textDecoration: 'none', color: '#666' }}>Work</a>
-          <a href="#contact" style={{ textDecoration: 'none', color: '#000', fontWeight: '500' }}>Contact</a>
+        <div className="hidden md:flex gap-8 items-center font-medium">
+          <a href="#approach" className="text-gray-500 hover:text-gray-900 transition-colors">Our Approach</a>
+          <a href="#services" className="text-gray-500 hover:text-gray-900 transition-colors">Services</a>
+          <a href="#contact" className="px-5 py-2 text-sm text-white bg-gray-900 rounded-full hover:bg-blue-600 transition-colors">
+            Contact Us
+          </a>
         </div>
       </nav>
 
       {/* 2. HERO SECTION */}
-      <header style={{ padding: '6rem 5%', textAlign: 'center', backgroundColor: '#fafafa' }}>
-        <span style={{ textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '1px', color: '#666' }}>
-          Myanmar's Premier Software House
+      <header className="relative flex flex-col items-center justify-center px-6 py-32 text-center bg-gradient-to-b from-gray-50 to-white">
+        <span className="mb-4 text-sm font-bold tracking-widest text-blue-600 uppercase">
+          More Than Just Coders
         </span>
-        <h1 style={{ fontSize: '3.5rem', margin: '1rem 0', lineHeight: '1.1', color: '#000' }}>
-          Engineering High-Performance <br/> Digital Products
+        <h1 className="max-w-4xl text-5xl font-extrabold tracking-tight text-gray-900 md:text-6xl leading-tight">
+          Your Dedicated Tech Partner <br className="hidden md:block" /> in Myanmar
         </h1>
-        <p style={{ fontSize: '1.2rem', color: '#666', maxWidth: '700px', margin: '0 auto 2.5rem' }}>
-          We design, engineer, and scale world-class web, mobile, and backend cloud systems. Trusted by local builders and global enterprises.
+        <p className="max-w-2xl mt-6 text-lg text-gray-500 leading-relaxed">
+          We bridge the gap between your business logic and technology. Stop worrying about miscommunication and failed projects. We bring structured teams, transparent Agile processes, and enterprise-grade security to your digital transformation.
         </p>
-        <a href="#contact" style={{ padding: '1rem 2rem', backgroundColor: '#000', color: '#fff', textDecoration: 'none', borderRadius: '6px', fontSize: '1.1rem', fontWeight: '500' }}>
-          Start a Project
-        </a>
+        <div className="mt-10">
+          <a href="#contact" className="px-8 py-4 text-lg font-medium text-white transition-transform transform bg-gray-900 rounded-lg shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-gray-800 focus:ring-4 focus:ring-gray-200">
+            Discuss Your Project
+          </a>
+        </div>
       </header>
 
-      {/* 3. SERVICES SECTION */}
-      <section id="services" style={{ padding: '5rem 5%', maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '2rem', borderBottom: '2px solid #eaeaea', paddingBottom: '1rem', marginBottom: '2rem' }}>
-          What We Build
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-          
-          <div style={{ padding: '2rem', border: '1px solid #eaeaea', borderRadius: '12px' }}>
-            <h3 style={{ marginTop: 0 }}>Custom Web Portals</h3>
-            <p style={{ color: '#666' }}>High-speed applications built using Next.js, React, and server-side rendering for optimal load speeds.</p>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li>React / Next.js / TypeScript</li>
-              <li>SEO-optimized layouts</li>
-            </ul>
-          </div>
-
-          <div style={{ padding: '2rem', border: '1px solid #eaeaea', borderRadius: '12px' }}>
-            <h3 style={{ marginTop: 0 }}>Cross-Platform Mobile</h3>
-            <p style={{ color: '#666' }}>Beautiful Android and iOS apps crafted with Flutter. Fully optimized for local networks and devices.</p>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li>Flutter & Dart compiled native</li>
-              <li>Optimized for low bandwidth</li>
-            </ul>
-          </div>
-
-          <div style={{ padding: '2rem', border: '1px solid #eaeaea', borderRadius: '12px' }}>
-            <h3 style={{ marginTop: 0 }}>Enterprise APIs & Cloud</h3>
-            <p style={{ color: '#666' }}>Scalable system architectures deploying Node.js and Laravel microservices on AWS.</p>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li>RESTful & GraphQL APIs</li>
-              <li>Automated Docker deployments</li>
-            </ul>
-          </div>
-
+      {/* 3. WHY CHOOSE US */}
+      <section id="approach" className="px-6 py-24 mx-auto max-w-7xl">
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            The Right Way to Build Software
+          </h2>
+          <div className="w-24 h-1 mt-4 mx-auto bg-blue-600 rounded-full"></div>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            { title: "Virtual CTO & Domain Focus", desc: "We take time to understand your business domain, acting as your Virtual CTO to align tech with business goals." },
+            { title: "Structured, Specialized Teams", desc: "No 'One Man Shows.' Every project gets a dedicated PM, UI/UX Designer, and specialized Developers." },
+            { title: "Transparent Agile Process", desc: "You get a seat at the table with access to our Jira/Trello boards for continuous feedback on deliverables." },
+            { title: "NDA & Data Security", desc: "We enforce strict NDAs and follow industry-best security practices to protect your business assets." }
+          ].map((feature, idx) => (
+            <div key={idx} className="p-8 transition-shadow bg-white border border-gray-100 rounded-2xl hover:shadow-lg group">
+              <span className="text-4xl font-black text-gray-100 group-hover:text-blue-100 transition-colors">0{idx + 1}</span>
+              <h3 className="mt-4 mb-2 text-xl font-semibold text-gray-900">{feature.title}</h3>
+              <p className="text-gray-500 leading-relaxed">{feature.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* 4. PORTFOLIO SECTION */}
-      <section id="portfolio" style={{ padding: '5rem 5%', backgroundColor: '#fafafa' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '2rem', borderBottom: '2px solid #eaeaea', paddingBottom: '1rem', marginBottom: '2rem' }}>
-            Featured Cases
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            
-            <article style={{ padding: '2rem', backgroundColor: '#fff', border: '1px solid #eaeaea', borderRadius: '12px' }}>
-              <span style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase' }}>Mobile Application • Quiz Academy</span>
-              <h3 style={{ margin: '0.5rem 0' }}>Myan Quiz App</h3>
-              <p style={{ margin: '0 0 1rem 0', color: '#444' }}>A multiplayer quiz application configured for hundreds of thousands of concurrent local players, featuring real-time socket leaderboards.</p>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <span style={{ padding: '0.3rem 0.6rem', backgroundColor: '#f0f0f0', borderRadius: '4px', fontSize: '0.85rem' }}>Flutter</span>
-                <span style={{ padding: '0.3rem 0.6rem', backgroundColor: '#f0f0f0', borderRadius: '4px', fontSize: '0.85rem' }}>Node.js</span>
-              </div>
-            </article>
+      {/* 4. SERVICES & TECH STACK SECTION */}
+      <section id="services" className="px-6 py-24 bg-gray-50">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              The Right Tech for the Right Job
+            </h2>
+            <p className="mt-4 text-lg text-gray-500">
+              We don't force a single technology onto every problem. We select the specific stack that matches your requirement.
+            </p>
+          </div>
 
-            <article style={{ padding: '2rem', backgroundColor: '#fff', border: '1px solid #eaeaea', borderRadius: '12px' }}>
-              <span style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase' }}>GIS Enterprise Portal • Telecom Myanmar</span>
-              <h3 style={{ margin: '0.5rem 0' }}>Spylnx Fiber Tracker</h3>
-              <p style={{ margin: '0 0 1rem 0', color: '#444' }}>A web-based geographic mapping system mapping optical fiber cable assets, enabling automated maintenance dispatch.</p>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <span style={{ padding: '0.3rem 0.6rem', backgroundColor: '#f0f0f0', borderRadius: '4px', fontSize: '0.85rem' }}>React</span>
-                <span style={{ padding: '0.3rem 0.6rem', backgroundColor: '#f0f0f0', borderRadius: '4px', fontSize: '0.85rem' }}>Laravel</span>
-              </div>
-            </article>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="p-10 bg-white border border-gray-200 rounded-3xl shadow-sm">
+              <h3 className="text-2xl font-bold text-gray-900">High-Performance Mobile & Web</h3>
+              <p className="mt-4 text-gray-500 mb-6">Native-feeling Android and iOS apps alongside lightning-fast web portals.</p>
+              <ul className="space-y-3 font-medium text-gray-700">
+                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Android Native / Flutter</li>
+                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Next.js / React</li>
+              </ul>
+            </div>
 
+            <div className="p-10 bg-white border border-gray-200 rounded-3xl shadow-sm">
+              <h3 className="text-2xl font-bold text-gray-900">Scalable Backend Cloud Systems</h3>
+              <p className="mt-4 text-gray-500 mb-6">Robust infrastructure capable of handling massive concurrency and complex logic.</p>
+              <ul className="space-y-3 font-medium text-gray-700">
+                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Laravel / Node.js</li>
+                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> AWS Cloud Infrastructure</li>
+                <li className="flex items-center gap-2"><span className="text-blue-500">✓</span> Supabase & PostgreSQL</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 5. CONTACT SECTION */}
-      <section id="contact" style={{ padding: '5rem 5%', maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '2rem', borderBottom: '2px solid #eaeaea', paddingBottom: '1rem', marginBottom: '2rem' }}>
-          Start Engineering Today
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
+      <section id="contact" className="px-6 py-24 mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           
           <div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Yangon Headquarters</h3>
-            <p style={{ color: '#666', marginBottom: '2rem' }}>Drop by our tech office or dispatch an email to schedule an architecture review.</p>
-            <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2' }}>
-              <li><strong>📍 Location:</strong> No. 42, Pyay Road, Kamayut Township, Yangon</li>
-              <li><strong>✉️ Email:</strong> hello@software100.mm</li>
-              <li><strong>📞 Phone:</strong> +95 9 770 100 100</li>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
+              Let's Start a Conversation
+            </h2>
+            <p className="text-lg text-gray-500 mb-8 leading-relaxed">
+              Effective communication is the key to software success. Reach out for an initial architecture review and see if our working style is the right fit for your business.
+            </p>
+            <ul className="space-y-6 text-gray-700 text-lg">
+              <li className="flex items-start gap-4">
+                <span className="text-2xl">📍</span>
+                <span><strong>Location:</strong><br/>No. 42, Pyay Road, Kamayut Township, Yangon</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="text-2xl">✉️</span>
+                <span><strong>Email:</strong><br/><a href="mailto:hello@software100.mm" className="text-blue-600 hover:underline">hello@software100.mm</a></span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="text-2xl">📞</span>
+                <span><strong>Phone:</strong><br/>+95 9 770 100 100</span>
+              </li>
             </ul>
           </div>
           
-          {/* Simple Server-Side Form Structure */}
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-            <input 
-              type="text" 
-              name="name" 
-              placeholder="Your Name" 
-              required 
-              style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '6px', fontSize: '1rem' }} 
-            />
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Work Email" 
-              required 
-              style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '6px', fontSize: '1rem' }} 
-            />
-            <textarea 
-              name="message" 
-              placeholder="Tell us about your project infrastructure needs..." 
-              rows="5" 
-              required 
-              style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '6px', fontSize: '1rem', fontFamily: 'inherit' }}
-            ></textarea>
-            <button 
-              type="submit" 
-              style={{ padding: '1rem', backgroundColor: '#000', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '1rem', fontWeight: 'bold', cursor: 'pointer' }}
-            >
-              Submit Inquiry
-            </button>
-          </form>
+          <div className="p-8 bg-white border border-gray-200 shadow-xl rounded-2xl">
+            <form className="flex flex-col gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name / Company</label>
+                <input 
+                  type="text" 
+                  id="name"
+                  required 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                  placeholder="Jane Doe"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+                <input 
+                  type="email" 
+                  id="email"
+                  required 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                  placeholder="jane@company.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+                <textarea 
+                  id="message"
+                  rows="4" 
+                  required 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
+                  placeholder="Briefly describe your business logic and current bottlenecks..."
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                className="w-full px-6 py-4 text-lg font-bold text-white transition-colors bg-gray-900 rounded-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-200"
+              >
+                Request a Consultation
+              </button>
+            </form>
+          </div>
 
         </div>
       </section>
 
       {/* 6. FOOTER */}
-      <footer style={{ padding: '3rem 5%', textAlign: 'center', backgroundColor: '#000', color: '#fff' }}>
-        <p style={{ margin: '0 0 1rem 0', fontWeight: 'bold' }}>&lt;/&gt; Software 100</p>
-        <p style={{ margin: 0, fontSize: '0.9rem', color: '#aaa' }}>© 2026 Software 100 (Myanmar) Co., Ltd. All Rights Reserved.</p>
+      <footer className="px-6 py-12 text-center text-gray-400 bg-gray-950">
+        <p className="mb-2 text-xl font-bold text-white tracking-tight">&lt;/&gt; Software 100</p>
+        <p className="text-sm">© {new Date().getFullYear()} Software 100 (Myanmar) Co., Ltd. All Rights Reserved.</p>
       </footer>
 
     </main>
